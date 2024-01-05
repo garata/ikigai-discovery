@@ -1,0 +1,554 @@
+* {
+  box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  background: #2a2734;
+}
+
+svg.ikigai {
+  width: 100%;
+  height: 100%;
+  /* Center vertically and horizontally */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+svg.ikigai {
+  width: 95vmin;
+  height: 95vmin;
+  margin: auto;
+}
+
+svg.ikigai path {
+  stroke: #2a2734;
+  stroke-width: 0.5;
+}
+
+svg.ikigai path.love {
+  fill: #ffff99;
+}
+
+svg.ikigai path.love:hover {
+  fill: #ffff80;
+}
+
+svg.ikigai path.needs {
+  fill: #ff9999;
+}
+
+svg.ikigai path.needs:hover {
+  fill: #ff8080;
+}
+
+svg.ikigai path.money {
+  fill: #9999ff;
+}
+
+svg.ikigai path.money:hover {
+  fill: #8080ff;
+}
+
+svg.ikigai path.skills {
+  fill: #99ff99;
+}
+
+svg.ikigai path.skills:hover {
+  fill: #80ff80;
+}
+
+svg.ikigai path.mission {
+  fill: #ffcc99;
+}
+
+svg.ikigai path.mission:hover {
+  fill: #ffbf80;
+}
+
+svg.ikigai path.vocation {
+  fill: #cc99cc;
+}
+
+svg.ikigai path.vocation:hover {
+  fill: #c488c4;
+}
+
+svg.ikigai path.profession {
+  fill: #99cccc;
+}
+
+svg.ikigai path.profession:hover {
+  fill: #88c4c4;
+}
+
+svg.ikigai path.passion {
+  fill: #ccff99;
+}
+
+svg.ikigai path.passion:hover {
+  fill: #bfff80;
+}
+
+svg.ikigai path.delight {
+  fill: #e6e699;
+}
+
+svg.ikigai path.delight:hover {
+  fill: #e1e185;
+}
+
+svg.ikigai path.excitement {
+  fill: #e6b3b3;
+}
+
+svg.ikigai path.excitement:hover {
+  fill: #e0a0a0;
+}
+
+svg.ikigai path.comfort {
+  fill: #b3b3cc;
+}
+
+svg.ikigai path.comfort:hover {
+  fill: #a4a4c2;
+}
+
+svg.ikigai path.satisfaction {
+  fill: #b3e6b3;
+}
+
+svg.ikigai path.satisfaction:hover {
+  fill: #a0e0a0;
+}
+
+svg.ikigai path.ikigai {
+  fill: #fff;
+}
+
+svg.ikigai path.ikigai:hover {
+  fill: #f2f2f2;
+}
+
+svg.ikigai text {
+  text-anchor: middle;
+  alignment-baseline: middle;
+  font-size: 5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+svg.ikigai text.small {
+  font-size: 4px;
+  font-weight: 400;
+  text-transform: none;
+}
+
+svg.ikigai .lvl-3 text {
+  font-size: 4px;
+  font-weight: 400;
+  font-style: italic;
+  text-transform: none;
+}
+
+svg.ikigai .lvl-3 path {
+  cursor: pointer;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 99;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 5px;
+  background: #222;
+  color: #fff;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  /*box-shadow: -1px 2px 5px rgba(0, 0, 0, 0.2);*/
+  transition: opacity 0.3s, visibility 0s;
+  visibility: hidden;
+  opacity: 0;
+  max-width: 240px;
+}
+
+.tooltip-arrow {
+  position: absolute;
+  top: -4px;
+  width: 7px;
+  height: 7px;
+  background: inherit;
+  transform: rotate(45deg);
+  border-top: 1px solid #aaa;
+  border-left: 1px solid #aaa;
+}
+
+.tooltip li {
+  position: relative;
+  list-style-type: none;
+  text-indent: -2em;
+}
+
+.tooltip li:before {
+  content: '—  ';
+}
+
+.tooltip ul,
+.tooltip li {
+  margin: 0 14px 0;
+  padding: 0;
+}
+
+.tooltip ul[title]::before {
+  content: attr(title);
+  font-weight: bold;
+  margin: -10px;
+  text-decoration: underline;
+}
+
+.tooltip ul {
+  list-style-position: outside;
+  padding-top: 15px;
+  visibility: hidden;
+  display: none;
+  opacity: 0;
+  transition: visibility 0s linear 0.33s, opacity 0.33s linear;
+}
+
+.tooltip ul[visible] {
+  visibility: visible;
+  display: block;
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+.overlay {
+  opacity: 0;
+}
+
+.overlay[visible] {
+  opacity: 1;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  filter: blur(6px);
+  transition: 120ms ease;
+  overflow: hidden;
+}
+
+.popup {
+  box-sizing: border-box;
+  z-index: 25;
+  box-shadow: 0 2px 5px 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 24px;
+  width: 700px;
+  height: 92vh;
+  max-height: 420px;
+  min-height: 380px;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  padding: 0 50px;
+}
+
+.popup__final-img {
+  max-width: 220px;
+  height: auto;
+  margin-top: 20px;
+  align-self: center;
+  border-radius: 5px;
+}
+
+.popup__content {
+  display: none;
+  margin: 0 auto;
+  flex-direction: column;
+  transition: all 3s ease;
+  transform: translateX(-15px);
+}
+
+.popup__content[visible] {
+  transition: all 3s ease;
+  display: flex;
+  transform: translateX(0);
+}
+
+.popup__progress-item img {
+  width: 14px;
+  height: 10px;
+}
+
+.popup[visible] {
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  visibility: visible;
+  transition: 0.5s;
+  top: 50%;
+}
+
+.popup__title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  padding: 0;
+  margin: 10px 0 0;
+  display: inline-block;
+  vertical-align: middle;
+  height: 50px;
+}
+
+.popup__subtitle {
+  text-align: center;
+  font-style: italic;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 8px 0 0;
+  padding: 0;
+}
+
+.popup__textarea {
+}
+
+.popup__close {
+  color: #525252;
+  z-index: 21;
+  position: absolute;
+  top: 0;
+  right: 22px;
+  height: 16px;
+  width: 16px;
+  background-color: transparent;
+  border: none;
+  outline-color: transparent;
+  padding: 6px 12px 12px;
+  font-weight: 800;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.popup__button {
+  margin: 8px auto 0;
+  padding: 8px 0;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  outline-color: transparent;
+  border: none;
+  background-color: #f25042;
+  color: #fff;
+  width: 176px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.popup__button:disabled {
+  margin: 8px auto 0;
+  padding: 8px 0;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  outline-color: transparent;
+  border: none;
+  background-color: #dfdfdf;
+  color: #fff;
+  width: 176px;
+  height: 40px;
+}
+
+.popup__progress {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  align-self: center;
+}
+
+.popup__progress-line {
+  height: 2px;
+  width: 8px;
+  background-color: #f25042;
+  display: none;
+}
+
+.popup__progress-line[visible] {
+  display: block;
+}
+
+.popup__progress-item {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  border: 2px solid #f25042;
+  color: #d20f26;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup__progress-item[active] {
+  background-color: #f25042;
+  color: #fff;
+}
+
+.popup__table {
+  display: table;
+  height: 100%;
+  table-layout: fixed;
+}
+
+.popup__row {
+  display: table-row;
+  height: 50%;
+}
+
+.popup__table .popup__row:last-child {
+  margin: 20px;
+  border: 1px solid red;
+  color: red;
+}
+
+.popup__cell {
+  display: table-cell;
+  _border: #000000 solid 1px;
+}
+
+.quiz {
+  display: flex;
+  flex-direction: column;
+  padding: 25px 0;
+}
+
+.quiz__question {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  padding: 16px 0 12px;
+}
+
+.quiz__answers_images {
+  display: flex;
+}
+
+.quiz textarea {
+  resize: none;
+}
+
+/* Customize the label (the container) */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container_images {
+  padding: 0;
+  margin: 0 auto 40px;
+}
+
+.container_images > img {
+  width: 110px;
+  height: 130px;
+  object-fit: cover;
+}
+
+.container_images:not(:first-of-type) {
+  padding-left: 23px;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 12px;
+  width: 12px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 2.5px solid #808080;
+}
+
+.checkmark_images {
+  bottom: -26px;
+  left: 50%;
+  top: auto;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.container input:checked ~ .checkmark {
+  border: 2px solid #f25042;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8.5px;
+  height: 8.5px;
+  border-radius: 50%;
+  background: #f25042;
+}
+
+/*
+.suggestion {
+  font-style: italic;
+  color: #777;
+  margin-top: 5px;
+}
+footer {
+  text-align: center;
+}
+a {
+  text-decoration: none;
+}
+*/
