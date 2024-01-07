@@ -276,7 +276,8 @@ if('orientation' in screen) {
     if (e.currentTarget.type === 'landscape-primary') {
       const popupDiv = document.getElementsByClassName('popup')[0];
       popupDiv.scrollIntoView(false);
-      window.scrollTo(0, popupDiv.scrollHeight);
+      window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
+      alert(1);
     }
   });
 }
