@@ -272,6 +272,8 @@ createEffect(() => {
 });
 
 window.addEventListener("orientationchange", function() {
-  history.scrollRestoration = "manual";
-  window.onload = scrollToBottom;
+  setTimeout(function(){
+    // Hide the address bar
+    window.scrollTo(0, 1);
+  }, 0);
 }, false);
