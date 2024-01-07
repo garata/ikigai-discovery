@@ -271,13 +271,10 @@ createEffect(() => {
   );
 });
 
-if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-  // When ready, auto-scroll 1px to hide URL bar
-  window.addEventListener("load", function () {
-      // Set a timeout...
-      setTimeout(function () {
-          // Hide the address bar!
-          window.scrollTo(0, 1);
-      }, 0);
-  });
-}
+window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
+  const portrait = e.matches;
+  const popup = document.getElementsByClassName('popup')[0];
+  if (portrait) {
+    popup.scrollTop = popup.scrollHeight - popup.clientHeight;
+  }
+});
