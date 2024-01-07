@@ -274,7 +274,7 @@ createEffect(() => {
 window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
   const portrait = e.matches;
   const popup = document.getElementsByClassName('popup')[0];
-  alert(ortrait);
+  alert(portrait);
   if (portrait) {
     popup.scrollTop = popup.scrollHeight - popup.clientHeight;
   }
