@@ -277,5 +277,6 @@ window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
   if (portrait) {
     popup.scrollTop = popup.scrollHeight - popup.clientHeight;
     window.scrollTo(0, 1);
+    setTimeout(function() { window.scrollTo(0, document.body.scrollHeight); }, 500);
   }
 });
