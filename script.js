@@ -270,3 +270,11 @@ createEffect(() => {
     `
   );
 });
+
+if('orientation' in screen){
+  window.screen.orientation.onchange = function() {
+        if (this.type.startsWith('landscape') && popupVisible()) {
+          window.scrollTo(0, 0);
+        }
+  }
+}
