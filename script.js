@@ -271,9 +271,13 @@ createEffect(() => {
   );
 });
 
-window.addEventListener("orientationchange", function() {
-  setTimeout(function(){
-    // Hide the address bar
-    window.scrollTo(0, 1);
-  }, 0);
-}, false);
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  // When ready, auto-scroll 1px to hide URL bar
+  window.addEventListener("load", function () {
+      // Set a timeout...
+      setTimeout(function () {
+          // Hide the address bar!
+          window.scrollTo(0, 1);
+      }, 0);
+  });
+}
