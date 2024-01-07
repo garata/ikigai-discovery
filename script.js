@@ -272,12 +272,8 @@ createEffect(() => {
 });
 
 if('orientation' in screen) {
-  screen.orientation.addEventListener('change', function(e) {
-    if (e.currentTarget.type === 'landscape-primary') {
-      const popupDiv = document.getElementsByClassName('popup')[0];
-      popupDiv.scrollIntoView(false);
-      window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
-      alert(1);
-    }
-  });
+  window.addEventListener("orientationchange", function() {
+    window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
+    this.alert(1);
+  }, false);
 }
