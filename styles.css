@@ -610,12 +610,12 @@ svg.ikigai .lvl-3 path {
     padding: 25px 0px 0px 0px;
   }
   ._popup__title {
-    margin-top: -10px !important;
+    margin-top: -15px !important;
 
   }
   .popup__button:disabled, .popup__button {
     width: 80px !important;
-    height: 15px !important;
+    height: 20px !important;
   }  
 }
 
