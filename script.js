@@ -274,8 +274,7 @@ createEffect(() => {
 if('orientation' in screen){
   window.screen.orientation.onchange = function() {
     if (this.type.startsWith('landscape') && popupVisible()) {
-      const scrollingElement = (document.scrollingElement || document.body);
-      scrollingElement.scrollTop = scrollingElement.scrollHeight;
+      document.getElementsByClassName('popup')[0].scrollIntoView(false);
     }
   }
 }
