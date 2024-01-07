@@ -333,7 +333,9 @@ svg.ikigai .lvl-3 path {
   padding: 0;
 }
 
-.popup__textarea {}
+.popup__textarea {
+  outline: 1px dashed #ccc;
+}
 
 .popup__close {
   color: #525252;
@@ -436,7 +438,6 @@ svg.ikigai .lvl-3 path {
 
 .popup__cell {
   display: table-cell;
-  _border: #000000 solid 1px;
 }
 
 .quiz {
