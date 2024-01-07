@@ -125,7 +125,8 @@ const Popup = () => html`
           ${questions().map(
             (value2, index2) => html`
                 <div class="popup__progress-item" ?active=${index2 === index} ?done=${(0 === index2 && questionVisible() > 0) ||
-                  (index2 > 0 && index > index2)}>${index2 + 1}</div>
+                  (index2 > 0 && index > index2)}>${(0 === index2 && questionVisible() > 0) ||
+                    (index2 > 0 && index > index2) ? ' ' : index2 + 1}</div>
                 <div class="popup__progress-line" ?visible=${
                   index2 < questions().length - 1
                 }></div>
