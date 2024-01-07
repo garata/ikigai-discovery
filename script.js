@@ -277,6 +277,7 @@ if('orientation' in screen) {
       const popupDiv = document.getElementsByClassName('popup')[0];
       popupDiv.scrollIntoView(false);
       window.scrollTo(0, popupDiv.scrollHeight);
+      alert(1);
     }
   }
 }
