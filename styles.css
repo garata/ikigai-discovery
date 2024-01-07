@@ -335,6 +335,7 @@ svg.ikigai .lvl-3 path {
 
 .popup__textarea {
   outline: 1px dashed #ccc;
+  border: 1px solid blue;
 }
 
 .popup__close {
