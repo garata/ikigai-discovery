@@ -271,9 +271,6 @@ createEffect(() => {
   );
 });
 
-if('orientation' in screen) {
-  window.addEventListener("orientationchange", function() {
-    window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
-    this.alert(1);
-  }, false);
-}
+window.addEventListener("orientationchange", function() {
+  window.scrollTo(0,9999);
+}, false);
