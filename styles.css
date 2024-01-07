@@ -301,6 +301,10 @@ svg.ikigai .lvl-3 path {
   height: 10px;
 }
 
+.popup__progress-item[done]:after {
+  content: '\01F5F8';
+}
+
 .popup[visible] {
   transform: translate(-50%, -50%);
   opacity: 1;
