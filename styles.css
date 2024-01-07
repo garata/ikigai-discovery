@@ -593,8 +593,8 @@ svg.ikigai .lvl-3 path {
   }
 
   .popup {
-    padding: 15px 20px;
-    max-height: 270px;
+    padding: 0px 20px;
+    max-height: 340px;
   }
 
   .popup__title {
