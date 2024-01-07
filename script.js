@@ -1,6 +1,8 @@
 const signalCDNJS = await import('//cdn.skypack.dev/usignal@0.8.0/solid');
 const uhtmlCDNJS = await import('//unpkg.com/uhtml');
 
+const isMobile = (typeof screen.orientation !== 'undefined');
+
 const { createSignal, createEffect, createMemo } = signalCDNJS;
 const { render, html, svg } = uhtmlCDNJS;
 
@@ -10,10 +12,10 @@ const [questionVisible, setQuestionVisible] = createSignal(0);
 const [overlayVisible, setOverlayVisible] = createSignal(true);
 const [popupVisible, setPopupVisible] = createSignal(true);
 const [answersVisible, setAnswersVisible] = createSignal([
-  false,
-  false,
-  false,
-  false,
+  isMobile,
+  isMobile,
+  isMobile,
+  isMobile,
 ]);
 const [tooltip, setTooltip] = createSignal(null);
 const [questions] = createSignal([
@@ -211,7 +213,7 @@ const Ikigai = () => svg`
   </g>
   <g class="lvl-3" @mouseout=${Tooltip()} @mouseover=${Tooltip(true)}
   @click=${(e) => {
-    setAnswersVisible([
+    !isMobile && setAnswersVisible([
       ...answersVisible().slice(0, Object.keys(overlaps).indexOf(e.target.id)),
       !answersVisible()[Object.keys(overlaps).indexOf(e.target.id)],
       ...answersVisible().slice(Object.keys(overlaps).indexOf(e.target.id) + 1),
