@@ -609,7 +609,7 @@ svg.ikigai .lvl-3 path {
   .quiz {
     padding: 25px 0px 0px 0px;
   }
-  .popup__title {
+  ._popup__title {
     margin-top: 15px !important;
   }
   .popup__button {
