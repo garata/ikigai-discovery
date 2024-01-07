@@ -273,8 +273,9 @@ createEffect(() => {
 
 if('orientation' in screen){
   window.screen.orientation.onchange = function() {
-        if (this.type.startsWith('landscape') && popupVisible()) {
-          window.scrollTo(0, 0);
-        }
+    if (this.type.startsWith('landscape') && popupVisible()) {
+      const scrollingElement = (document.scrollingElement || document.body);
+      scrollingElement.scrollTop = scrollingElement.scrollHeight;
+    }
   }
 }
