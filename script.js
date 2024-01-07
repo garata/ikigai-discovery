@@ -272,5 +272,6 @@ createEffect(() => {
 });
 
 window.addEventListener("orientationchange", function() {
-  window.scrollTo(0,9999);
+  history.scrollRestoration = "manual";
+  window.onload = scrollToBottom;
 }, false);
