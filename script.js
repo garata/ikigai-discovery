@@ -128,7 +128,7 @@ const Popup = () => html`
                 ${
                   (0 === index2 && questionVisible() > 0) ||
                   (index2 > 0 && index > index2)
-                    ? '<span class="filled"></span>'
+                    ? '🗸'
                     : index2 + 1
                 }</div>
                 <div class="popup__progress-line" ?visible=${
