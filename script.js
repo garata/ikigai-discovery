@@ -1,7 +1,7 @@
 const signalCDNJS = await import('//cdn.skypack.dev/usignal@0.8.0/solid');
 const uhtmlCDNJS = await import('//unpkg.com/uhtml');
 
-const isMobile = (typeof screen.orientation !== 'undefined');
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
 const { createSignal, createEffect, createMemo } = signalCDNJS;
 const { render, html, svg } = uhtmlCDNJS;
