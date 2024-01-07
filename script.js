@@ -264,8 +264,8 @@ createEffect(() => {
   render(
     document.body,
     html`
-      ${Ikigai()}
       ${Overlay()}
+      ${Ikigai()}
       ${Popup()}
     `
   );
