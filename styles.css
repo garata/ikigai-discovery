@@ -301,6 +301,10 @@ svg.ikigai .lvl-3 path {
   height: 10px;
 }
 
+.popup__progress-item[done] {
+  visibility: hidden;
+}
+
 .popup__progress-item[done]:after {
   content: '\01F5F8';
 }
